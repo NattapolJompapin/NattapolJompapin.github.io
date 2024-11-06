@@ -42,7 +42,9 @@ WebTest
     <h1 id="myHeading">Welcome To my GitHub </h1>
     <hr />
     <div class="description"> * Nattapol Jompapin</div>
-    * UP66 </div>
+    * University of Phayao 
+    * Student 66 
+    * </div>
 
   </body>
 
