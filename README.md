@@ -61,7 +61,7 @@
                     </p>
                     <p>
                         <i class="fab fa-github" aria-hidden="true"></i>
-                        <a href="https://github.com/NattapolJompapin">github.com/NattapolJompapin</a>
+                        <a href="https://github.com/NattapolJompapin">https://github.com/NattapolJompapin</a>
                     </p>
                     <p>
                         <i class="fa fa-phone contactIcon" aria-hidden="true"></i>
