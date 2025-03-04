@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Graph with Chart.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            
+        }
+        canvas {
+            width: 100%;
+            height: 400px;
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-bottom: 5%;
+        }
+        img {
+            width: 100%;
+            height: 400px;
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-bottom: 5%;
+        }
+        .input-container {
+            margin: 20px;
+        }
+        
+    </style>
+
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+    <p class="Header">Statistic of density
+        line graph</p>
+    <style>
+        .Header {
+            font-size: 40px;
+            color: #955dd1;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin-top: 5%;
+        }
+    </style>
+    <div style="text-align: left;">
+        <a href="statistic.html" class="box">Back</a>
+        <style>
+        .box {
+            width: 100px;
+            height: 50px;
+            background-color: #895BE6;
+            border: 2px solid #895BE6;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            align-content: center;
+            border-radius: 7px;
+            box-shadow: 4px 4px 5px rgba(0, 0, 0, 0); 
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            margin-left: 5%;
+        }
+        </style>
+    </div>
+<canvas id="myChart"></canvas>
+
+
+<script>
+    const initialData1 = [0,0,1,4,7,5,8,5,2,3,6,9,6,3,0,0];
+    const initialData2 = [0,0,1,2,3,4,5,6,3,4,7,10,8,8,5,2];
+    const initialData3 = [0,0,1,4,7,5,2,0,0,3,6,3,0,0,0,0];
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    let myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'],
+            datasets: [{
+                label: 'A Line',
+                data: initialData1,
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.0
+            },
+            {
+                label: 'B Line',
+                data: initialData2,
+                fill: false,
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.0
+            },
+            {
+                label: 'C Line',
+                data: initialData3,
+                fill: false,
+                borderColor: 'rgb(75, 99, 75)',
+                tension: 0.0
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Function to update the graph with new data
+    function updateGraph() {
+        const newData1 = document.getElementById('newData1').value.split(',').map(Number);
+        const newData2 = document.getElementById('newData2').value.split(',').map(Number);
+        const newData3 = document.getElementById('newData3').value.split(',').map(Number);
+
+        // Check for valid input (numbers only)
+        if (newData1.some(isNaN) || newData2.some(isNaN) || newData3.some(isNaN)) {
+            alert('Please enter valid numbers for both lines.');
+            return;
+        }
+
+        myChart.data.datasets[0].data = newData1;
+        myChart.data.datasets[1].data = newData2;
+        myChart.data.datasets[2].data = newData3;
+        myChart.update();
+    }
+</script>
+</body>
+</html>
